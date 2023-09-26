@@ -14,7 +14,7 @@ export const Main = () => {
     <Container>
       <Text>Hello</Text>
 
-      <ThreeDModelViewer />
+      <ThreeDModelViewer></ThreeDModelViewer>
 
       <Button
         onPress={updateAuthState}

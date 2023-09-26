@@ -22,7 +22,7 @@ export default function ThreeDModelViewer() {
      <Canvas style={{flex: 1}}>
         <Suspense fallback={null}>
           <Model />
-          <OrbitControls />          
+          {/* <OrbitControls />           */}
           <Environment preset="sunset" background />  
         </Suspense>
       </Canvas>

@@ -1,10 +1,11 @@
-import React, {Suspense, useEffect, useRef, useState} from 'react';
+import {Suspense, useEffect, useRef, useState} from 'react';
 import {View} from 'react-native';
 import {Canvas, useFrame} from '@react-three/fiber/native';
 import {Environment, useGLTF} from '@react-three/drei/native';
 // import * as THREE from 'three';
-import {Loader} from '../../screens/Loader';
+
 import useControls from 'r3f-native-orbitcontrols';
+import {useGLTFCustom} from '../../utils/customGLTFLoader';
 
 const Model = () => {
   const meshRef = useRef(null);
@@ -12,7 +13,7 @@ const Model = () => {
   // const group = useRef();
   // const actions = useRef();
   const modelLink = './LeePerrySmith.glb';
-  const model = useGLTF(require(modelLink));
+  const model = useGLTFCustom(require(modelLink));
   const {nodes, scene, materials, animations} = model;
 
   // useFrame((state, delta) => mixer.update(delta));
@@ -53,7 +54,6 @@ export default function ThreeDModelViewer() {
   const [OrbitControls, events] = useControls();
   // const camera = new THREE.PerspectiveCamera();
 
-  console.debug(events);
   return (
     <View
       {...events}
@@ -68,11 +68,10 @@ export default function ThreeDModelViewer() {
 
         <ambientLight intensity={0.1} />
         <directionalLight position={[1, 2, 3]} intensity={1} />
-        {/* <directionalLight position={[0, 5, -4]} intensity={4} /> */}
-        {/* <Model /> */}
-        {/* <Environment {...events} background preset="sunset" blur={0.8} /> */}
 
-        <Box position={[0, 0, 0]} />
+        <Model />
+
+        {/* <Box position={[0, 0, 0]} /> */}
       </Canvas>
     </View>
   );

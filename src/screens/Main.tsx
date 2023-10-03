@@ -1,5 +1,4 @@
-import React = require('react');
-import {Button, Text} from 'react-native';
+import {Button, Text, View} from 'react-native';
 import {useAuthState} from '../context/AuthContext';
 import {Container} from '../templates/Container';
 import ThreeDModelViewer from '../components/Models/Model';
